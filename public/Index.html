@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <title>HOT SPOT APP</title>
+    <style>
+        .pzaz {
+            border: 1px solid red;
+        }
+        .pzaz2 {
+            border: 1px solid black;
+        }
+        .bzz {
+            /*background-color: blue;*/
+        }
+        .bzz:hover {
+            font-weight: bold;
+            color: royalblue;
+            cursor: pointer;
+
+        }
+        /*.map-container{*/
+        /*    overflow:hidden;*/
+        /*    padding-bottom:56.25%;*/
+        /*    position:relative;*/
+        /*    height:0;*/
+        /*}*/
+        /*.map-container iframe{*/
+        /*    left:0;*/
+        /*    top:0;*/
+        /*    height:100%;*/
+        /*    width:100%;*/
+        /*    position:absolute;*/
+        /*}*/
+
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script>
+        let map;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: new google.maps.LatLng(-33.91722, 151.23064),
+                zoom: 16,
+            });
+            const iconBase =
+                "https://developers.google.com/maps/documentation/javascript/examples/full/images/";
+            const icons = {
+                parking: {
+                    icon: iconBase + "parking_lot_maps.png",
+                },
+                library: {
+                    icon: iconBase + "library_maps.png",
+                },
+                info: {
+                    icon: iconBase + "info-i_maps.png",
+                },
+            };
+            const features = [
+                {
+                    position: new google.maps.LatLng(-33.91721, 151.2263),
+                    type: "info",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91539, 151.2282),
+                    type: "info",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91747, 151.22912),
+                    type: "info",
+                },
+                {
+                    position: new google.maps.LatLng(-33.9191, 151.22907),
+                    type: "info",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91725, 151.23011),
+                    type: "info",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91872, 151.23089),
+                    type: "info",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91784, 151.23094),
+                    type: "info",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91682, 151.23149),
+                    type: "info",
+                },
+                {
+                    position: new google.maps.LatLng(-33.9179, 151.23463),
+                    type: "info",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91666, 151.23468),
+                    type: "info",
+                },
+                {
+                    position: new google.maps.LatLng(-33.916988, 151.23364),
+                    type: "info",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91662347903106, 151.22879464019775),
+                    type: "parking",
+                },
+                {
+                    position: new google.maps.LatLng(-33.916365282092855, 151.22937399734496),
+                    type: "parking",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91665018901448, 151.2282474695587),
+                    type: "parking",
+                },
+                {
+                    position: new google.maps.LatLng(-33.919543720969806, 151.23112279762267),
+                    type: "parking",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91608037421864, 151.23288232673644),
+                    type: "parking",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91851096391805, 151.2344058214569),
+                    type: "parking",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91818154739766, 151.2346203981781),
+                    type: "parking",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91727341958453, 151.23348314155578),
+                    type: "library",
+                },
+            ];
+            let places;
+            // for(let i = 0; < )
+
+            // Create markers.
+            for (let i = 0; i < features.length; i++) {
+                const marker = new google.maps.Marker({
+                    position: features[i].position,
+                    icon: icons[features[i].type].icon,
+                    map: map,
+                });
+            }
+
+        }
+        function newMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: new google.maps.LatLng(47.647935, -122.361046),
+                zoom: 16,
+            });
+            const iconBase =
+                "https://developers.google.com/maps/documentation/javascript/examples/full/images/";
+            const icons = {
+                parking: {
+                    icon: iconBase + "parking_lot_maps.png",
+                },
+                library: {
+                    icon: iconBase + "library_maps.png",
+                },
+                info: {
+                    icon: iconBase + "info-i_maps.png",
+                },
+            };
+            const features = [
+                {
+                    position: new google.maps.LatLng(-33.91721, 151.2263),
+                    type: "info",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91539, 151.2282),
+                    type: "info",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91747, 151.22912),
+                    type: "info",
+                },
+                {
+                    position: new google.maps.LatLng(-33.9191, 151.22907),
+                    type: "info",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91725, 151.23011),
+                    type: "info",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91872, 151.23089),
+                    type: "info",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91784, 151.23094),
+                    type: "info",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91682, 151.23149),
+                    type: "info",
+                },
+                {
+                    position: new google.maps.LatLng(-33.9179, 151.23463),
+                    type: "info",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91666, 151.23468),
+                    type: "info",
+                },
+                {
+                    position: new google.maps.LatLng(-33.916988, 151.23364),
+                    type: "info",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91662347903106, 151.22879464019775),
+                    type: "parking",
+                },
+                {
+                    position: new google.maps.LatLng(-33.916365282092855, 151.22937399734496),
+                    type: "parking",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91665018901448, 151.2282474695587),
+                    type: "parking",
+                },
+                {
+                    position: new google.maps.LatLng(-33.919543720969806, 151.23112279762267),
+                    type: "parking",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91608037421864, 151.23288232673644),
+                    type: "parking",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91851096391805, 151.2344058214569),
+                    type: "parking",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91818154739766, 151.2346203981781),
+                    type: "parking",
+                },
+                {
+                    position: new google.maps.LatLng(-33.91727341958453, 151.23348314155578),
+                    type: "library",
+                },
+            ];
+            var num = Math.floor(Math.random() * 33) + 30;
+            var newPos;
+            var arr;
+            for (let i = 0; i < 18; i++){
+                num = Math.floor(Math.random() * 33) + 30;
+                newPos = {
+                    position: new google.maps.LatLng(-1*num+.91662347903106, 151.2263),
+                        type: "info",
+                }
+                arr.push(newPos);
+            }
+            console.log(arr);
+            let places;
+            // for(let i = 0; < )
+
+            // Create markers.
+            for (let i = 0; i < features.length; i++) {
+                const marker = new google.maps.Marker({
+                    position: features[i].position,
+                    icon: icons[features[i].type].icon,
+                    map: map,
+                });
+            }
+
+        }
+    </script>
+</head>
+<body>
+<header>
+
+    <h1 class="font-monospace fw-bold" style="text-align: center; ">WELCOME TO THE HOTSPOT</h1>
+</header>
+<div class="container">
+    <div class="input-group">
+        <input type="search" class="form-control rounded" placeholder="SEARCH BY ZIP CODE OR BY TYPE OF EVENT" aria-label="Search"
+               aria-describedby="search-addon" />
+        <button type="button" class="btn btn-outline-primary">search</button>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col ">
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center bzz">
+                    <a id="myLink" title="Click to do something"
+                       href="#" onclick="loadNewMap();">link text</a>
+                    <span class="badge badge-primary badge-pill">14</span></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center bzz">
+                    Drifts
+                    <span class="badge badge-primary badge-pill">14</span></li></li>
+
+                <li class="list-group-item d-flex justify-content-between align-items-center bzz">Food gatherings
+                    <span class="badge badge-primary badge-pill">44</span></li></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center bzz">Movie gatherings
+                    <span class="badge badge-primary badge-pill">68</span></li></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center bzz">Soccer matches
+                    <span class="badge badge-primary badge-pill">29</span></li></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center bzz">Football matches
+                    <span class="badge badge-primary badge-pill">74</span></li></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center bzz">Baseball spots
+                    <span class="badge badge-primary badge-pill">94</span></li></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center bzz">Hangouts
+                    <span class="badge badge-primary badge-pill">78</span></li></li>
+            </ul>
+
+            <button type="button" class="btn btn-primary btn-lg btn-block">Find Spots</button>
+        </div>
+        <div class="col-10">
+            <div id="map"></div>
+
+            <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+            <script
+
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1omiSS_yEcgEjeGfgsHsJd5LlmhBzbTA&callback=initMap&libraries=&v=weekly"
+                    async
+            ></script>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
