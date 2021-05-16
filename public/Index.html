@@ -59,237 +59,34 @@
         }
     </style>
     <script>
-        let map;
 
-        function initMap() {
-            map = new google.maps.Map(document.getElementById("map"), {
-                center: new google.maps.LatLng(-33.91722, 151.23064),
-                zoom: 16,
+        function initMap(count) {
+            // Create the map.
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 12,
+                center: { lat: 47.604560, lng: -122.334570 },
+                mapTypeId: "terrain",
             });
-            const iconBase =
-                "https://developers.google.com/maps/documentation/javascript/examples/full/images/";
-            const icons = {
-                parking: {
-                    icon: iconBase + "parking_lot_maps.png",
-                },
-                library: {
-                    icon: iconBase + "library_maps.png",
-                },
-                info: {
-                    icon: iconBase + "info-i_maps.png",
-                },
-            };
-            const features = [
-                {
-                    position: new google.maps.LatLng(-33.91721, 151.2263),
-                    type: "info",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91539, 151.2282),
-                    type: "info",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91747, 151.22912),
-                    type: "info",
-                },
-                {
-                    position: new google.maps.LatLng(-33.9191, 151.22907),
-                    type: "info",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91725, 151.23011),
-                    type: "info",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91872, 151.23089),
-                    type: "info",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91784, 151.23094),
-                    type: "info",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91682, 151.23149),
-                    type: "info",
-                },
-                {
-                    position: new google.maps.LatLng(-33.9179, 151.23463),
-                    type: "info",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91666, 151.23468),
-                    type: "info",
-                },
-                {
-                    position: new google.maps.LatLng(-33.916988, 151.23364),
-                    type: "info",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91662347903106, 151.22879464019775),
-                    type: "parking",
-                },
-                {
-                    position: new google.maps.LatLng(-33.916365282092855, 151.22937399734496),
-                    type: "parking",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91665018901448, 151.2282474695587),
-                    type: "parking",
-                },
-                {
-                    position: new google.maps.LatLng(-33.919543720969806, 151.23112279762267),
-                    type: "parking",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91608037421864, 151.23288232673644),
-                    type: "parking",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91851096391805, 151.2344058214569),
-                    type: "parking",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91818154739766, 151.2346203981781),
-                    type: "parking",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91727341958453, 151.23348314155578),
-                    type: "library",
-                },
-            ];
-            let places;
-            // for(let i = 0; < )
 
-            // Create markers.
-            for (let i = 0; i < features.length; i++) {
-                const marker = new google.maps.Marker({
-                    position: features[i].position,
-                    icon: icons[features[i].type].icon,
-                    map: map,
-                });
-            }
-
-        }
-        function newMap() {
-            map = new google.maps.Map(document.getElementById("map"), {
-                center: new google.maps.LatLng(47.647935, -122.361046),
-                zoom: 16,
-            });
-            const iconBase =
-                "https://developers.google.com/maps/documentation/javascript/examples/full/images/";
-            const icons = {
-                parking: {
-                    icon: iconBase + "parking_lot_maps.png",
-                },
-                library: {
-                    icon: iconBase + "library_maps.png",
-                },
-                info: {
-                    icon: iconBase + "info-i_maps.png",
-                },
-            };
-            const features = [
-                {
-                    position: new google.maps.LatLng(-33.91721, 151.2263),
-                    type: "info",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91539, 151.2282),
-                    type: "info",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91747, 151.22912),
-                    type: "info",
-                },
-                {
-                    position: new google.maps.LatLng(-33.9191, 151.22907),
-                    type: "info",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91725, 151.23011),
-                    type: "info",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91872, 151.23089),
-                    type: "info",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91784, 151.23094),
-                    type: "info",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91682, 151.23149),
-                    type: "info",
-                },
-                {
-                    position: new google.maps.LatLng(-33.9179, 151.23463),
-                    type: "info",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91666, 151.23468),
-                    type: "info",
-                },
-                {
-                    position: new google.maps.LatLng(-33.916988, 151.23364),
-                    type: "info",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91662347903106, 151.22879464019775),
-                    type: "parking",
-                },
-                {
-                    position: new google.maps.LatLng(-33.916365282092855, 151.22937399734496),
-                    type: "parking",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91665018901448, 151.2282474695587),
-                    type: "parking",
-                },
-                {
-                    position: new google.maps.LatLng(-33.919543720969806, 151.23112279762267),
-                    type: "parking",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91608037421864, 151.23288232673644),
-                    type: "parking",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91851096391805, 151.2344058214569),
-                    type: "parking",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91818154739766, 151.2346203981781),
-                    type: "parking",
-                },
-                {
-                    position: new google.maps.LatLng(-33.91727341958453, 151.23348314155578),
-                    type: "library",
-                },
-            ];
-            var num = Math.floor(Math.random() * 33) + 30;
-            var newPos;
-            var arr;
-            for (let i = 0; i < 18; i++){
-                num = Math.floor(Math.random() * 33) + 30;
-                newPos = {
-                    position: new google.maps.LatLng(-1*num+.91662347903106, 151.2263),
-                        type: "info",
+            for (let i = 0; i < count; i++) {
+                let ranLat = 47 + Math.random() * (.76 - .36) + .36;
+                let ranLng = -122.9 + Math.random() * (.7 - .49) + .49;
+                let ranPop = Math.random() * (37 - 7) + 7;
+                random = {
+                    center: { lat: ranLat, lng: ranLng},
+                    population: ranPop
                 }
-                arr.push(newPos);
-            }
-            console.log(arr);
-            let places;
-            // for(let i = 0; < )
-
-            // Create markers.
-            for (let i = 0; i < features.length; i++) {
-                const marker = new google.maps.Marker({
-                    position: features[i].position,
-                    icon: icons[features[i].type].icon,
-                    map: map,
+                const cityCircle = new google.maps.Circle({
+                    strokeColor: "#FF0000",
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: "#FF0000",
+                    fillOpacity: 0.35,
+                    map,
+                    center: random.center,
+                    radius: Math.sqrt(random.population) * 70,
                 });
             }
-
         }
     </script>
 </head>
@@ -310,24 +107,30 @@
 
             <ul class="list-group list-group-flush">
                 <li class="list-group-item d-flex justify-content-between align-items-center bzz">
-                    <a id="myLink" title="Click to do something"
-                       href="#" onclick="loadNewMap();">link text</a>
+                    <a title="Click to do something"
+                       href="#" onclick="initMap(14);">Parties</a>
                     <span class="badge badge-primary badge-pill">14</span></li>
                 <li class="list-group-item d-flex justify-content-between align-items-center bzz">
-                    Drifts
+                    <a href="#" onclick="initMap(23);">Drifts</a>
                     <span class="badge badge-primary badge-pill">14</span></li></li>
 
-                <li class="list-group-item d-flex justify-content-between align-items-center bzz">Food gatherings
+                <li class="list-group-item d-flex justify-content-between align-items-center bzz">
+                    <a href="#" onclick="initMap(44);">Food gatherings</a>
                     <span class="badge badge-primary badge-pill">44</span></li></li>
-                <li class="list-group-item d-flex justify-content-between align-items-center bzz">Movie gatherings
+                <li class="list-group-item d-flex justify-content-between align-items-center bzz">
+                    <a href="#" onclick="initMap(68);">Movie gatherings</a>
                     <span class="badge badge-primary badge-pill">68</span></li></li>
-                <li class="list-group-item d-flex justify-content-between align-items-center bzz">Soccer matches
+                <li class="list-group-item d-flex justify-content-between align-items-center bzz">
+                    <a href="#" onclick="initMap(29);">Soccer matches</a>
                     <span class="badge badge-primary badge-pill">29</span></li></li>
-                <li class="list-group-item d-flex justify-content-between align-items-center bzz">Football matches
+                <li class="list-group-item d-flex justify-content-between align-items-center bzz">
+                    <a href="#" onclick="initMap(74);">Football matches</a>
                     <span class="badge badge-primary badge-pill">74</span></li></li>
-                <li class="list-group-item d-flex justify-content-between align-items-center bzz">Baseball spots
+                <li class="list-group-item d-flex justify-content-between align-items-center bzz">
+                    <a href="#" onclick="initMap(94);">Baseball matches</a>
                     <span class="badge badge-primary badge-pill">94</span></li></li>
-                <li class="list-group-item d-flex justify-content-between align-items-center bzz">Hangouts
+                <li class="list-group-item d-flex justify-content-between align-items-center bzz">
+                    <a href="#" onclick="initMap(78);">Hangouts</a>
                     <span class="badge badge-primary badge-pill">78</span></li></li>
             </ul>
 
@@ -338,7 +141,6 @@
 
             <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
             <script
-
                     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1omiSS_yEcgEjeGfgsHsJd5LlmhBzbTA&callback=initMap&libraries=&v=weekly"
                     async
             ></script>
